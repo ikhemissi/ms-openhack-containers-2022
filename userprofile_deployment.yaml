@@ -32,7 +32,7 @@ spec:
           value: "mydrivingDB"
 
         # https://kubernetes.io/docs/concepts/configuration/secret/#using-secrets-as-environment-variables
-        - name: SECRET_PASSWORD
+        - name: SQL_PASSWORD
           valueFrom:
               secretKeyRef:
                 name: sql-password 
