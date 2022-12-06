@@ -1,0 +1,51 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  creationTimestamp: null
+  labels:
+    app: poi
+  name: poi
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: poi
+  strategy: {}
+  template:
+    metadata:
+      creationTimestamp: null
+      labels:
+        app: poi
+    spec:
+      containers:
+      - image: registrynhi6414.azurecr.io/tripviewer/poi
+        name: poi
+        ports:
+        - containerPort: 80        
+        resources: {}
+        
+        # https://kubernetes.io/docs/tasks/inject-data-application/define-environment-variable-container/
+        env:
+        - name: SQL_USER
+          value: "sqladminnHi6414"
+        - name: SQL_SERVER
+          value: "sqlservernhi6414.database.windows.net"
+        - name: SQL_DBNAME
+          value: "mydrivingDB"
+        - name: WEB_SERVER_BASE_URI
+          value: "http://0.0.0.0"
+        - name: ASPNETCORE_ENVIRONMENT
+          value: "Production"
+        - name: DOTNET_SYSTEM_GLOBALIZATION_INVARIANT
+          value: "false"   
+
+        # https://kubernetes.io/docs/concepts/configuration/secret/#using-secrets-as-environment-variables
+        - name: SECRET_PASSWORD
+          valueFrom:
+              secretKeyRef:
+                name: sql-password 
+                key: SQL_PASSWORD
+                optional: false # same as default; "mysecret" must exist
+                                # and include a key named "password"
+                            
+status: {}
