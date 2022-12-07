@@ -1,0 +1,37 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  creationTimestamp: null
+  labels:
+    app: tripviewer
+  name: tripviewer
+  namespace: web
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: tripviewer
+  strategy: {}
+  template:
+    metadata:
+      creationTimestamp: null
+      labels:
+        app: tripviewer
+    spec:
+      containers:
+      - image: registrynhi6414.azurecr.io/tripviewer/tripviewer
+        name: tripviewer
+        ports:
+        - containerPort: 80  
+        
+        resources: {}
+        
+        # https://kubernetes.io/docs/tasks/inject-data-application/define-environment-variable-container/
+        env:
+        - name: TRIPS_API_ENDPOINT
+          value: "http://trips.api"
+        - name: USERPROFILE_API_ENDPOINT
+          value: "http://userprofile.api"
+          
+                            
+status: {}
