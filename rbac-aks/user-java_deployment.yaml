@@ -1,0 +1,45 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  creationTimestamp: null
+  labels:
+    app: user-java
+  name: user-java
+  namespace: api
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: user-java
+  strategy: {}
+  template:
+    metadata:
+      creationTimestamp: null
+      labels:
+        app: user-java
+    spec:
+      containers:
+      - image: registrynhi6414.azurecr.io/tripviewer/user-java
+        name: user-java
+        resources: {}
+        ports:
+        - containerPort: 80       
+        # https://kubernetes.io/docs/tasks/inject-data-application/define-environment-variable-container/
+        env:
+        - name: SQL_USER
+          value: "sqladminnHi6414"
+        - name: SQL_SERVER
+          value: "sqlservernhi6414.database.windows.net"
+        - name: SQL_DBNAME
+          value: "mydrivingDB"
+
+        # https://kubernetes.io/docs/concepts/configuration/secret/#using-secrets-as-environment-variables
+        - name: SQL_PASSWORD
+          valueFrom:
+              secretKeyRef:
+                name: sql-password 
+                key: SQL_PASSWORD
+                optional: false # same as default; "mysecret" must exist
+                                # and include a key named "password"
+                            
+status: {}
