@@ -1,0 +1,43 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: insurance
+  namespace: web
+  labels:
+    deploy: insurance
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: insurance
+  template:
+    metadata:
+      labels:
+        app: insurance
+    spec:
+      containers:
+      - image: "registrynhi6414.azurecr.io/insurance:1.0"
+        name: insurance
+        ports:
+        - containerPort: 8081
+          name: http
+          protocol: TCP
+        resources:
+          requests:
+            memory: "100Mi"
+          limits:
+            memory: "500Mi"
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: insurance
+spec:
+  type: ClusterIP
+  selector:
+    app: insurance
+  ports:
+  - protocol: TCP
+    name: insurance-http
+    port: 80
+    targetPort: 8081

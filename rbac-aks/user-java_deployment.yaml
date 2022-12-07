@@ -33,13 +33,18 @@ spec:
         - name: SQL_DBNAME
           value: "mydrivingDB"
 
-        # https://kubernetes.io/docs/concepts/configuration/secret/#using-secrets-as-environment-variables
-        - name: SQL_PASSWORD
-          valueFrom:
-              secretKeyRef:
-                name: sql-password 
-                key: SQL_PASSWORD
-                optional: false # same as default; "mysecret" must exist
-                                # and include a key named "password"
+        # https://learn.microsoft.com/en-us/azure/aks/csi-secrets-store-identity-access#use-a-user-assigned-managed-identity
+        volumeMounts:
+        - name: secrets-store01-inline
+          mountPath: "/secrets"
+          readOnly: true
+      
+      volumes:
+      - name: secrets-store01-inline
+        csi:
+          driver: secrets-store.csi.k8s.io
+          readOnly: true
+          volumeAttributes:
+            secretProviderClass: "az-kv-challenge-4"
                             
 status: {}
