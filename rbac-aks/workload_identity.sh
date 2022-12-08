@@ -29,6 +29,6 @@ export AKS_OIDC_ISSUER="$(az aks show -n AKS-OPTeam5 -g teamResources --query "o
 # CREATE USER [id-trip-sql] FROM EXTERNAL PROVIDER
 # ALTER ROLE db_owner ADD MEMBER [id-trip-sql]
 
-az identity federated-credential create --name "id-fed-wi" --identity-name "$USER_ASSIGNED_IDENTITY_NAME" --resource-group "$RG_NAME" --issuer "$AKS_OIDC_ISSUER" --subject system:serviceaccount:"${SERVICE_ACCOUNT_NAMESPACE}":"${SERVICE_ACCOUNT_NAME}"
+az identity federated-credential create --name "id-fed-wi" --identity-name "$USER_ASSIGNED_IDENTITY_NAME" --resource-group "$RG_NAME" --issuer "$AKS_OIDC_ISSUER" --subject system:serviceaccount:"$SERVICE_ACCOUNT_NAMESPACE":"$SERVICE_ACCOUNT_NAME"
 
 
