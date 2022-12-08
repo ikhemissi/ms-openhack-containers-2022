@@ -1,0 +1,44 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  creationTimestamp: null
+  labels:
+    app: trips
+  name: trips
+  namespace: api
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: trips
+  strategy: {}
+  template:
+    metadata:
+      creationTimestamp: null
+      labels:
+        app: trips
+      annotations:
+        azure.workload.identity/inject-proxy-sidecar : "true"
+        azure.workload.identity/proxy-sidecar-port : "8080"
+    spec:
+      serviceAccountName: workload-identity-sa
+      containers:
+      - image: registrynhi6414.azurecr.io/tripviewer/trips
+        name: trips
+        ports:
+        - containerPort: 80
+        
+        # https://kubernetes.io/docs/tasks/inject-data-application/define-environment-variable-container/
+        env:
+        - name: SQL_SERVER
+          value: "sqlservernhi6414.database.windows.net"
+        - name: SQL_DBNAME
+          value: "mydrivingDB"
+        - name: OPENAPI_DOCS_URI
+          value: "http://changeme"
+        - name: DEBUG_LOGGING
+          value: "true"
+        - name: "CREDENTIAL_METHOD"
+          value: "managed_identity"
+        - name: "IDENTITY_CLIENT_ID"
+          value: "2d6e982d-e08d-4e65-86d8-abaa781ef172"

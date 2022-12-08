@@ -1,0 +1,275 @@
+{
+  "aadProfile": {
+    "adminGroupObjectIDs": null,
+    "adminUsers": null,
+    "clientAppId": null,
+    "enableAzureRbac": true,
+    "managed": true,
+    "serverAppId": null,
+    "serverAppSecret": null,
+    "tenantId": "fd3b38ba-babb-4d23-a96d-93a50ad74791"
+  },
+  "addonProfiles": {
+    "azureKeyvaultSecretsProvider": {
+      "config": {
+        "enableSecretRotation": "false",
+        "rotationPollInterval": "2m"
+      },
+      "enabled": true,
+      "identity": {
+        "clientId": "e25c17dc-e129-4a5a-9749-398039fdbd47",
+        "objectId": "b5f057ec-8611-437b-b451-cb12ce701f34",
+        "resourceId": "/subscriptions/0eb57050-dbc4-4b42-97d4-8c3eec4bb45d/resourcegroups/MC_teamResources_AKS-OPTeam5_westus/providers/Microsoft.ManagedIdentity/userAssignedIdentities/azurekeyvaultsecretsprovider-aks-opteam5"
+      }
+    },
+    "azurepolicy": {
+      "config": null,
+      "enabled": true,
+      "identity": {
+        "clientId": "f41116df-3d32-4873-b3fb-6d95fb44508b",
+        "objectId": "86986ecc-a0d7-478b-82a8-2c153fcc7a93",
+        "resourceId": "/subscriptions/0eb57050-dbc4-4b42-97d4-8c3eec4bb45d/resourcegroups/MC_teamResources_AKS-OPTeam5_westus/providers/Microsoft.ManagedIdentity/userAssignedIdentities/azurepolicy-aks-opteam5"
+      }
+    },
+    "httpApplicationRouting": {
+      "config": null,
+      "enabled": false,
+      "identity": null
+    },
+    "omsAgent": {
+      "config": {
+        "logAnalyticsWorkspaceResourceID": "/subscriptions/0eb57050-dbc4-4b42-97d4-8c3eec4bb45d/resourceGroups/DefaultResourceGroup-WUS/providers/Microsoft.OperationalInsights/workspaces/DefaultWorkspace-0eb57050-dbc4-4b42-97d4-8c3eec4bb45d-WUS"
+      },
+      "enabled": true,
+      "identity": {
+        "clientId": "aa221b34-c2c3-43df-9d22-eb03694e586e",
+        "objectId": "876cedcd-b617-4da3-88a7-f42dcceb580f",
+        "resourceId": "/subscriptions/0eb57050-dbc4-4b42-97d4-8c3eec4bb45d/resourcegroups/MC_teamResources_AKS-OPTeam5_westus/providers/Microsoft.ManagedIdentity/userAssignedIdentities/omsagent-aks-opteam5"
+      }
+    }
+  },
+  "agentPoolProfiles": [
+    {
+      "availabilityZones": null,
+      "capacityReservationGroupId": null,
+      "count": 2,
+      "creationData": null,
+      "currentOrchestratorVersion": "1.23.12",
+      "enableAutoScaling": true,
+      "enableCustomCaTrust": false,
+      "enableEncryptionAtHost": null,
+      "enableFips": false,
+      "enableNodePublicIp": false,
+      "enableUltraSsd": null,
+      "gpuInstanceProfile": null,
+      "hostGroupId": null,
+      "kubeletConfig": null,
+      "kubeletDiskType": "OS",
+      "linuxOsConfig": null,
+      "maxCount": 2,
+      "maxPods": 110,
+      "messageOfTheDay": null,
+      "minCount": 2,
+      "mode": "System",
+      "name": "agentpool",
+      "networkProfile": null,
+      "nodeImageVersion": "AKSUbuntu-1804gen2containerd-2022.11.02",
+      "nodeLabels": null,
+      "nodePublicIpPrefixId": null,
+      "nodeTaints": null,
+      "orchestratorVersion": "1.23.12",
+      "osDiskSizeGb": 128,
+      "osDiskType": "Managed",
+      "osSku": "Ubuntu",
+      "osType": "Linux",
+      "podSubnetId": null,
+      "powerState": {
+        "code": "Running"
+      },
+      "provisioningState": "Succeeded",
+      "proximityPlacementGroupId": null,
+      "scaleDownMode": null,
+      "scaleSetEvictionPolicy": null,
+      "scaleSetPriority": null,
+      "spotMaxPrice": null,
+      "tags": null,
+      "type": "VirtualMachineScaleSets",
+      "upgradeSettings": null,
+      "vmSize": "Standard_DS2_v2",
+      "vnetSubnetId": "/subscriptions/0eb57050-dbc4-4b42-97d4-8c3eec4bb45d/resourceGroups/teamResources/providers/Microsoft.Network/virtualNetworks/vnet/subnets/vm-subnet",
+      "windowsProfile": null,
+      "workloadRuntime": null
+    }
+  ],
+  "apiServerAccessProfile": null,
+  "autoScalerProfile": {
+    "balanceSimilarNodeGroups": "false",
+    "expander": "random",
+    "maxEmptyBulkDelete": "10",
+    "maxGracefulTerminationSec": "600",
+    "maxNodeProvisionTime": "15m",
+    "maxTotalUnreadyPercentage": "45",
+    "newPodScaleUpDelay": "0s",
+    "okTotalUnreadyCount": "3",
+    "scaleDownDelayAfterAdd": "10m",
+    "scaleDownDelayAfterDelete": "10s",
+    "scaleDownDelayAfterFailure": "3m",
+    "scaleDownUnneededTime": "10m",
+    "scaleDownUnreadyTime": "20m",
+    "scaleDownUtilizationThreshold": "0.5",
+    "scanInterval": "10s",
+    "skipNodesWithLocalStorage": "false",
+    "skipNodesWithSystemPods": "true"
+  },
+  "autoUpgradeProfile": {
+    "nodeOsUpgradeChannel": null,
+    "upgradeChannel": "patch"
+  },
+  "azureMonitorProfile": {
+    "metrics": {
+      "enabled": true,
+      "kubeStateMetrics": {
+        "metricAnnotationsAllowList": "",
+        "metricLabelsAllowlist": ""
+      }
+    }
+  },
+  "azurePortalFqdn": "aks-opteam5-dns-921d69eb.portal.hcp.westus.azmk8s.io",
+  "creationData": null,
+  "currentKubernetesVersion": "1.23.12",
+  "disableLocalAccounts": true,
+  "diskEncryptionSetId": null,
+  "dnsPrefix": "AKS-OPTeam5-dns",
+  "enableNamespaceResources": null,
+  "enablePodSecurityPolicy": null,
+  "enableRbac": true,
+  "extendedLocation": null,
+  "fqdn": "aks-opteam5-dns-921d69eb.hcp.westus.azmk8s.io",
+  "fqdnSubdomain": null,
+  "guardrailsProfile": {
+    "excludedNamespaces": null,
+    "level": "Off",
+    "systemExcludedNamespaces": null,
+    "version": null
+  },
+  "httpProxyConfig": null,
+  "id": "/subscriptions/0eb57050-dbc4-4b42-97d4-8c3eec4bb45d/resourcegroups/teamResources/providers/Microsoft.ContainerService/managedClusters/AKS-OPTeam5",
+  "identity": {
+    "principalId": "0364f2f8-43e8-45f8-9088-469aa60230e3",
+    "tenantId": "fd3b38ba-babb-4d23-a96d-93a50ad74791",
+    "type": "SystemAssigned",
+    "userAssignedIdentities": null
+  },
+  "identityProfile": {
+    "kubeletidentity": {
+      "clientId": "c612a2ed-d0fb-44f5-849a-0bead19c7a1a",
+      "objectId": "e081d693-0ef3-4d43-a785-aa768478ddd8",
+      "resourceId": "/subscriptions/0eb57050-dbc4-4b42-97d4-8c3eec4bb45d/resourcegroups/MC_teamResources_AKS-OPTeam5_westus/providers/Microsoft.ManagedIdentity/userAssignedIdentities/AKS-OPTeam5-agentpool"
+    }
+  },
+  "ingressProfile": null,
+  "kubernetesVersion": "1.23.12",
+  "linuxProfile": null,
+  "location": "westus",
+  "maxAgentPools": 100,
+  "name": "AKS-OPTeam5",
+  "networkProfile": {
+    "dnsServiceIp": "10.0.0.10",
+    "dockerBridgeCidr": "172.17.0.1/16",
+    "ebpfDataplane": null,
+    "ipFamilies": [
+      "IPv4"
+    ],
+    "kubeProxyConfig": null,
+    "loadBalancerProfile": {
+      "allocatedOutboundPorts": null,
+      "backendPoolType": "nodeIPConfiguration",
+      "effectiveOutboundIPs": [
+        {
+          "id": "/subscriptions/0eb57050-dbc4-4b42-97d4-8c3eec4bb45d/resourceGroups/MC_teamResources_AKS-OPTeam5_westus/providers/Microsoft.Network/publicIPAddresses/c4ddbe50-2c29-4003-a3ca-c22ca97adb2f",
+          "resourceGroup": "MC_teamResources_AKS-OPTeam5_westus"
+        }
+      ],
+      "enableMultipleStandardLoadBalancers": null,
+      "idleTimeoutInMinutes": null,
+      "managedOutboundIPs": {
+        "count": 1,
+        "countIpv6": null
+      },
+      "outboundIPs": null,
+      "outboundIpPrefixes": null
+    },
+    "loadBalancerSku": "Standard",
+    "natGatewayProfile": null,
+    "networkMode": null,
+    "networkPlugin": "azure",
+    "networkPluginMode": null,
+    "networkPolicy": "azure",
+    "outboundType": "loadBalancer",
+    "podCidr": null,
+    "podCidrs": null,
+    "serviceCidr": "10.0.0.0/16",
+    "serviceCidrs": [
+      "10.0.0.0/16"
+    ]
+  },
+  "nodeResourceGroup": "MC_teamResources_AKS-OPTeam5_westus",
+  "oidcIssuerProfile": {
+    "enabled": true,
+    "issuerUrl": "https://westus.oic.prod-aks.azure.com/fd3b38ba-babb-4d23-a96d-93a50ad74791/804cfc30-d1c5-46e7-93ee-0a96ba0bf2d2/"
+  },
+  "podIdentityProfile": null,
+  "powerState": {
+    "code": "Running"
+  },
+  "privateFqdn": null,
+  "privateLinkResources": null,
+  "provisioningState": "Succeeded",
+  "publicNetworkAccess": null,
+  "resourceGroup": "teamResources",
+  "securityProfile": {
+    "azureKeyVaultKms": null,
+    "customCaTrustCertificates": null,
+    "defender": null,
+    "imageCleaner": null,
+    "nodeRestriction": null,
+    "workloadIdentity": {
+      "enabled": true
+    }
+  },
+  "servicePrincipalProfile": {
+    "clientId": "msi",
+    "secret": null
+  },
+  "sku": {
+    "name": "Basic",
+    "tier": "Paid"
+  },
+  "storageProfile": {
+    "blobCsiDriver": null,
+    "diskCsiDriver": {
+      "enabled": true,
+      "version": "v1"
+    },
+    "fileCsiDriver": {
+      "enabled": true
+    },
+    "snapshotController": {
+      "enabled": true
+    }
+  },
+  "systemData": null,
+  "tags": null,
+  "type": "Microsoft.ContainerService/ManagedClusters",
+  "windowsProfile": {
+    "adminPassword": null,
+    "adminUsername": "azureuser",
+    "enableCsiProxy": true,
+    "gmsaProfile": null,
+    "licenseType": null
+  },
+  "workloadAutoScalerProfile": {
+    "keda": null,
+    "verticalPodAutoscaler": null
+  }
+}

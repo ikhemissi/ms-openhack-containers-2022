@@ -1,0 +1,75 @@
+# apiVersion: networking.k8s.io/v1
+# kind: NetworkPolicy
+# metadata:
+#   name: default-deny-all
+#   namespace: api
+# spec:
+#   podSelector: {}
+#   policyTypes:
+#   - Ingress
+#   - Egress
+# ---
+# apiVersion: networking.k8s.io/v1
+# kind: NetworkPolicy
+# metadata:
+#   name: default-deny-all
+#   namespace: web
+# spec:
+#   podSelector: {}
+#   policyTypes:
+#   - Ingress
+#   - Egress
+---
+apiVersion: networking.k8s.io/v1
+kind: NetworkPolicy
+metadata:
+  name: allow-port-80
+  namespace: web
+spec:
+  podSelector:
+    matchLabels:
+      app: tripviewer
+  ingress:
+  - from:
+    - ipBlock:
+        cidr: 10.2.0.0/24
+    ports:
+    - protocol: TCP
+      port: 80
+      endPort: 80
+  policyTypes:
+  - Ingress
+---
+# apiVersion: networking.k8s.io/v1
+# kind: NetworkPolicy
+# metadata:
+#   name: allow-egress-to-api
+#   namespace: web
+# spec:
+#   podSelector: {}
+#   egress:
+#   - to:
+#     - namespaceSelector:
+#         matchLabels:
+#           name : api
+#   policyTypes:
+#   - Egress
+---
+apiVersion: networking.k8s.io/v1
+kind: NetworkPolicy
+metadata:
+  name: allow-api-rules
+  namespace: api
+spec:
+  podSelector: {}
+  ingress:
+  - from:
+    - namespaceSelector:
+        matchLabels:
+          name : web
+  egress: 
+    - {}
+  policyTypes:
+  - Ingress
+  - Egress
+---

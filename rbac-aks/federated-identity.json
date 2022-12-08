@@ -1,0 +1,11 @@
+{
+    "audiences": [
+      "api://AzureADTokenExchange"
+    ],
+    "id": "/subscriptions/0eb57050-dbc4-4b42-97d4-8c3eec4bb45d/resourcegroups/teamResources/providers/Microsoft.ManagedIdentity/userAssignedIdentities/id-trip-sql/federatedIdentityCredentials/id-fed-wi",
+    "issuer": "https://westus.oic.prod-aks.azure.com/fd3b38ba-babb-4d23-a96d-93a50ad74791/804cfc30-d1c5-46e7-93ee-0a96ba0bf2d2/",
+    "name": "id-fed-wi",
+    "resourceGroup": "teamResources",
+    "subject": "system:serviceaccount:api:workload-identity-sa",
+    "type": "Microsoft.ManagedIdentity/userAssignedIdentities/federatedIdentityCredentials"
+  }
